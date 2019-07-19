@@ -7,5 +7,7 @@ The digiforms is an open source web app created as a first project to my portfol
 # Freecodecamp
 I would like to say thanks for all people who help this project be builded, and in special say thanks to Freecodecamp - a free platform to learn and improve coding skills.
 
+See the topic about this project being created: https://www.freecodecamp.org/forum/t/creating-the-digiforms/296659
+
 # Why use digiforms?
 The digiforms learn with the community and use data to create better forms. Is the power of data helping developers make the web.
