@@ -1,0 +1,268 @@
+<%-include('header')%>
+<main>
+<div id="app-place"></div>
+
+<!-- Load React and JSX (Babel). -->
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!-- React component. -->
+<script type="text/jsx">
+'use strict'
+const styles = {
+	'textarea': 'width:400px'
+}
+const inputTypes = ['button','checkbox','color','date','datetime-local','email','file','image','month','number','password','radio','range','reset','search','submit','tel','text','time','url','week', 'textarea','select']
+
+const regularExpressionsTypes = {
+	'button': [],
+	'color':[],
+	'checkbox': [],
+	'date':[],
+	'datetime-local':[],
+	'email':[],
+	'file':[],
+	'image':[],
+	'month':[],
+	'number':[],
+	'password':[],
+	'radio':[],
+	'range':[],
+	'reset': [],
+	'search':[],
+	'submit': [],
+	'tel':[],
+	'text':
+		['Only numbers and letters',
+		'Only letters',
+		'Only numbers',
+		'Only special chars',
+		'Name or Surname',
+		'Name and Surname',
+		'Zipcode']
+	,
+	'time':[],
+	'url':['HTTP or HTTPS','Only HTTP','Only HTTPS'],
+	'week':[],
+	'textarea':[],
+	'select': [],
+	none: []
+}
+
+const regexString = {
+	'button': {},
+	'color':{},
+	'checkbox': {},
+	'date':{},
+	'datetime-local':{},
+	'email':{},
+	'file':{},
+	'image':{},
+	'month':{},
+	'number':{},
+	'password':{},
+	'radio':{},
+	'range':{},
+	'reset': {},
+	'search':{},
+	'submit': {},
+	'tel':{},
+	'text':{
+		'Only numbers and letters': '',
+		'Only letters': '',
+		'Only numbers': '',
+		'Only special chars': '',
+		'Name or Surname': '',
+		'Name and Surname': '',
+		'Zipcode': ''
+	},
+	'time':{},
+	'url': {
+		'HTTP or HTTPS': '',
+		'Only HTTP': '',
+		'Only HTTPS':''
+	},
+	'week':{},
+	'textarea':{},
+	'select': {},
+	'none': {}
+}
+
+class App extends React.Component{
+	constructor(props){
+		super(props)
+		this.state = {
+			inputTypeSelected: 'none',
+			regexTypeSelected: 'none',
+			breakLine:false,
+			name: false,
+			id: false,
+			className: false,
+			placeholder: false,
+			value: false,
+			required: false,
+			html: ['<form action="" method="">']
+		}
+		this.handleTypeSelected = this.handleTypeSelected.bind(this)
+		this.handleRegexSelected = this.handleRegexSelected.bind(this)
+		this.addButton = this.addButton.bind(this)
+
+	}
+handleTypeSelected(e){
+	this.setState({
+	inputTypeSelected: e.target.value
+	}, ()=>{console.log(this.state.inputTypeSelected)})
+	
+}
+handleRegexSelected(e){
+	this.setState({
+	regexTypeSelected: e.target.value
+	}, ()=>{console.log(this.state.regexTypeSelected)})
+}
+addButton(){
+const addHTML = (newHTML)=>{
+	this.setState({
+	html: [...this.state.html, newHTML]
+}, ()=>{console.log(this.state.html)})
+}
+const breakLine = this.state.breakLine ? '<br />':''
+const required = this.state.required ? ' required ' : ''
+const name = this.state.name ? ' name="'+this.state.name+'"':''
+const id = this.state.id ? ' id="'+this.state.id+'"':''
+const className = this.state.className ? ' class="'+this.state.className+'"':''
+const placeholder = this.state.placeholder ? ' placeholder="'+this.state.placeholder+'"':''
+const value = this.state.value ? ' value="'+this.state.value+'"':''
+const details = required+name+id+className+placeholder+value
+	switch(this.state.inputTypeSelected){
+
+	case 'none':
+		alert('Please select one type of input')
+		return
+	case 'button':
+		addHTML('<button type="" '+details+'></button>'+breakLine)
+		break
+	case 'color':
+		addHTML('<input type="color" '+details+'/>'+breakLine)
+		break
+	case 'checkbox':
+		addHTML('<input type="checkbox" '+details+'/>'+breakLine)
+		break
+	case 'date':
+		addHTML('<input type="date" '+details+'/>'+breakLine)
+		break
+	case 'datetime-local':
+		addHTML('<input type="datetime-local" '+details+'/>'+breakLine)
+		break
+	case 'email':
+		addHTML('<input type="email" '+details+'/>'+breakLine)
+		break
+	case 'file':
+		addHTML('<input type="file" '+details+'/>'+breakLine)
+		break
+	case 'image':
+		addHTML('<input type="image" '+details+'/>'+breakLine)
+		break
+	case 'month':
+		addHTML('<input type="month" '+details+'/>'+breakLine)
+		break
+	case 'number':
+		addHTML('<input type="number" '+details+'/>'+breakLine)
+		break
+	case 'password':
+		addHTML('<input type="password" '+details+'/>'+breakLine)
+		break
+	case 'radio':
+		addHTML('<input type="radio" '+details+'/>'+breakLine)
+		break
+	case 'range':
+		addHTML('<input type="range" '+details+'/>'+breakLine)
+		break
+	case 'reset':
+		addHTML('<button type="" '+details+'></button>'+breakLine)
+		break
+	case 'search':
+		addHTML('<input type="search" '+details+'/>'+breakLine)
+		break
+	case 'submit':
+		addHTML('<button type="" '+details+'></button>'+breakLine)
+		break
+	case 'tel':
+		addHTML('<input type="tel" '+details+'/>'+breakLine)
+		break
+	case 'text':
+		addHTML('<input type="text" '+details+'/>'+breakLine)
+		break
+	case 'time':
+		addHTML('<input type="time" '+details+'/>'+breakLine)
+		break
+	case 'url':
+		addHTML('<input type="url" '+details+'/>'+breakLine)
+		break
+	case 'week':
+		addHTML('<input type="week" '+details+'/>'+breakLine)
+		break
+	case 'textarea':
+		addHTML('<textarea '+details+' /></textarea>'+breakLine)
+		break
+	case 'select':
+		addHTML('<select  '+details+' /></select>'+breakLine)
+		break
+	default:
+		alert('Please select one type of input')
+	return
+	}
+}
+
+	render(){
+	const regexOfType = [...regularExpressionsTypes[this.state.inputTypeSelected]]
+		return(
+<div>
+<h1>Set the input:</h1>
+<label for="inputTypes">Input type: </label><br />
+<select name="inputTypes" onChange={this.handleTypeSelected} style={{width:300}}>
+	<option value="none">Select the type</option>
+	{
+		inputTypes.map((type)=>{return <option value={type} key={type}>{type}</option>})
+	}
+</select><br /><br />
+Regular expression for:<br />
+<select name="regexTypes" onChange={this.handleRegexSelected} style={{width:300}}>
+	<option value="none">Select the type</option>
+	{
+		regexOfType.map((type)=>{return <option value={type} key={type}>{type}</option>})
+	}
+</select><br /><br />
+Is required?<br />
+<input type="radio" name="isRequired" id="isRequiredYes" onChange={()=>this.state.required=true} /> <label for="isRequiredYes">Yes</label><br />
+<input type="radio" name="isRequired" id="isRequiredNo" onChange={()=>this.state.required=false} /> <label for="isRequiredNo">No</label><br /><br />
+Break the line?<br />
+<input type="radio" name="breakLine" id="breakLineYes" onChange={()=>this.state.breakLine=true} /> <label for="breakLineYes">Yes</label><br />
+<input type="radio" name="breakLine" id="breakLineNo" onChange={()=>this.state.breakLine=false} /> <label for="breakLineNo">No</label><br /><br />
+<label for="inputName">Name: </label><br />
+<input type="text" id="inputName" onChange={(e)=>{this.state.name=e.target.value}} style={{width:300}}/>
+<br /><br />
+<label for="inputId">Id: </label><br />
+<input type="text" id="inputId" onChange={(e)=>{this.state.id=e.target.value}} style={{width:300}}/>
+<br /><br />
+<label for="inputClass">Class: </label><br />
+<input type="text" id="inputClass" onChange={(e)=>{this.state.className=e.target.value}} style={{width:300}}/>
+<br /><br />
+<label for="inputPlaceholder">Placeholder: </label><br />
+<input type="text" id="inputPlaceholder" onChange={(e)=>{this.state.placeholder=e.target.value}} style={{width:300}}/>
+<br /><br />
+<label for="inputValue">Value: </label><br />
+<input type="text" id="inputValue" onChange={(e)=>{this.state.value=e.target.value}} style={{width:300}} />
+<br /><br />
+<button id="addButton" onClick={this.addButton}>Add</button><br /><br />
+
+<h1>The HTML:</h1>
+<textarea style={{width:300, height: 300}} value={this.state.html.join('\n')+"\n</form>"}></textarea>
+
+</div>
+			)
+	}
+}
+ReactDOM.render(<App />, document.querySelector('#app-place'))
+</script>
+</main>
+<%-include('footer')%>

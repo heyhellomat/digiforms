@@ -1,0 +1,47 @@
+main>#about-banner{
+	margin-top: 100px;
+	text-align: center;
+}
+main>#about-banner>h1{
+	font-size: 30px;
+	font-weight: 500;
+}
+main>#about-banner>h1>img{
+	height: 30px;
+}
+main>#about-advantages{
+	margin-top: 100px;
+}
+main>#about-advantages>h2{
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 52px;
+}
+main>#about-advantages>.about-info{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 80px;
+}
+main>#home-start{
+	display: grid;
+	justify-content: center;
+	margin-top: 100px;
+}
+main>#home-start a{
+	font-size: 20px;
+	text-decoration: none;
+	background-color: #363AFF;
+	color: #FFF;
+	font-weight: 400;
+	line-height: 48px;
+	width: 228px;
+	text-align: center;
+	vertical-align: middle;
+}
+@media only screen and (max-width: 710px){
+	main>#home-advantages>.advantages{
+		justify-content: center;
+	}
+}

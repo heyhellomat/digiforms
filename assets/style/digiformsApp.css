@@ -1,0 +1,9 @@
+main>#app-place{
+	margin-top: 100px;
+}
+main>#app-place>input,
+main>#app-place>select,
+main>#app-place>textarea
+{
+	width: 300px;
+}

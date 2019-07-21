@@ -1,0 +1,16 @@
+{
+  "name": "digiforms-improved",
+  "version": "1.0.0",
+  "description": "create smart forms",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateus Correa",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  }
+}
